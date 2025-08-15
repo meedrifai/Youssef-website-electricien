@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>يوسف - خبير كهرباء السيارات | الدار البيضاء</title>
+    <title> خبير كهرباء السيارات</title>
     <meta
       name="description"
       content="يوسف، خبير كهرباء السيارات مع أكثر من 25 سنة خبرة في الدار البيضاء. خدمات برمجة المفاتيح، تشخيص الأعطال، وإصلاح الكهرباء"
@@ -757,7 +757,7 @@
         <p>
           أكثر من 25 سنة خبرة في تشخيص وإصلاح كهرباء السيارات في الدار البيضاء
         </p>
-        <a href="#contact" class="cta-button">
+        <a href="#booking" class="cta-button">
           <i class="fas fa-phone"></i>
           احجز موعدك الآن
         </a>
@@ -883,9 +883,8 @@
           <div class="working-hours">
             <h3><i class="fas fa-clock"></i> أوقات العمل</h3>
             <div class="hours-list">
-              <div>الإثنين - الجمعة: 9:00 - 19:00</div>
-              <div>السبت: 9:00 - 17:00</div>
-              <div>الأحد: مغلق</div>
+              <div>الإثنين - الخميس : 9:00 - 19:00</div>
+              <div>الجمعة - الأحد : 9:00 - 17:00</div>
             </div>
           </div>
           <p>
@@ -894,7 +893,7 @@
             عند الحجز المسبق.
           </p>
           <a
-            href="https://wa.me/212600000000?text=السلام عليكم، أريد حجز موعد لخدمة كهرباء السيارات"
+            href="https://wa.me/212635027361?text=السلام عليكم، أريد حجز موعد لخدمة كهرباء السيارات"
             class="whatsapp-button"
             target="_blank"
           >
@@ -905,35 +904,112 @@
       </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Gallery -->
     <section id="gallery" class="section gallery">
       <div class="container">
         <div class="section-title">
           <h2>معرض الصور والفيديوهات</h2>
           <p>شاهد أعمالنا وجودة خدماتنا من خلال معرض الصور والفيديوهات</p>
         </div>
-        <div class="gallery-grid">
-          <div class="gallery-item fade-in">
-            <i class="fas fa-camera"></i>
-          </div>
-          <div class="gallery-item fade-in">
-            <i class="fas fa-play-circle"></i>
-          </div>
-          <div class="gallery-item fade-in">
-            <i class="fas fa-wrench"></i>
-          </div>
-          <div class="gallery-item fade-in">
-            <i class="fas fa-car"></i>
-          </div>
-          <div class="gallery-item fade-in">
-            <i class="fas fa-tools"></i>
-          </div>
-          <div class="gallery-item fade-in">
-            <i class="fas fa-video"></i>
-          </div>
-        </div>
+        <div class="gallery-grid" id="gallery-container"></div>
       </div>
     </section>
+
+    <script>
+      // Tableau de tes images
+      const galleryItems = [
+        "images/gallery/page_1.jpeg",
+        "images/gallery/page_2.jpg",
+        "images/gallery/page_3.jpg",
+        "images/gallery/page_4.jpeg",
+        "images/gallery/page_5.jpeg",
+        "images/gallery/page_6.jpg",
+      ];
+
+      const container = document.getElementById("gallery-container");
+
+      // Générer les images
+      galleryItems.forEach((src, index) => {
+        const div = document.createElement("div");
+        div.className = "gallery-item fade-in";
+        div.style.animationDelay = `${index * 0.1}s`;
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `Gallery item ${index + 1}`;
+
+        div.appendChild(img);
+        container.appendChild(div);
+      });
+    </script>
+
+    <style>
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        max-width: 100%;
+      }
+
+      .gallery-item {
+        aspect-ratio: 4/3; /* Ratio uniforme pour tous les conteneurs */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Remplit complètement le conteneur */
+        object-position: center; /* Centre l'image si recadrée */
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Animation fade-in */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInAnimation 0.6s ease-in-out forwards;
+      }
+
+      @keyframes fadeInAnimation {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+      }
+    </style>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="section testimonials">
